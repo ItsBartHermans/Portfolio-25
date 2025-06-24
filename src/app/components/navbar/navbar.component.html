@@ -1,0 +1,42 @@
+<nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-gifsplash-dark to-transparent w-full">
+    <div class="text-white p-4 flex items-center justify-between max-w-[1200px] mx-auto">
+        <!-- Logo -->
+        <div class="text-3xl font-extrabold">
+            <a href="/#hero" class="flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 640 512">
+                    <defs>
+                        <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#60A5FA" />
+                            <stop offset="100%" stop-color="#832FE3" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#iconGradient)"
+                        d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z" />
+                </svg>
+            </a>
+
+        </div>
+
+        <!-- Mobile menu toggle -->
+        <input #menuToggle type="checkbox" role="button" aria-label="Display the menu" class="menu lg:hidden"
+            [(ngModel)]="menuOpen" />
+
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex items-center space-x-18 font-bold">
+            <a href="#whoami" class="hover:underline">How to Play</a>
+            <a href="#projects" class="hover:underline">Projects</a>
+            <a href="#stack" class="hover:underline">Stack</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Slide-in Mobile Menu -->
+<div class="fixed inset-0 bg-[#111820] text-white px-6 pt-20 space-y-6 font-bold transition-transform duration-300 ease-in-out z-40 lg:hidden flex flex-col"
+    [class.translate-x-full]="!menuOpen" [class.translate-x-0]="menuOpen">
+
+    <a href="#whoami" class="hover:underline">How to Play</a>
+    <a href="#projects" class="hover:underline">Projects</a>
+    <a href="#stack" class="hover:underline">Stack</a>
+    <a href="#contact" class="hover:underline">Contact</a>
+</div>
