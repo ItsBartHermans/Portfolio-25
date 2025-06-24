@@ -1,0 +1,4 @@
+.hero-image {
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 30%, black 100%);
+    mask-image: linear-gradient(to top, transparent 0%, black 30%, black 100%);
+}
