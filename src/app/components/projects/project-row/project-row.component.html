@@ -1,0 +1,21 @@
+<div class="flex flex-col sm:flex-row sm:items-center p-4 rounded-md text-white max-w-full gap-4">
+    <!-- Left side: text -->
+    <div class="sm:flex-1 pr-0 md:pr-4 text-center sm:text-left">
+        <h2 class="text-white text-lg font-semibold mb-1">{{ project.title }}</h2>
+        <p class="text-gray-400 mb-3">{{ project.description }}</p>
+        <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200">
+            <svg class="w-5 h-5 mr-2 fill-current" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.11.793-.26.793-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.388-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.805 1.304 3.492.997.11-.776.418-1.304.76-1.604-2.665-.3-5.467-1.333-5.467-5.932 0-1.31.47-2.38 1.236-3.22-.123-.303-.536-1.523.117-3.176 0 0 1.008-.323 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 2.05.138 3.003.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.236 1.91 1.236 3.22 0 4.61-2.807 5.628-5.48 5.922.43.37.81 1.096.81 2.21 0 1.594-.015 2.877-.015 3.268 0 .32.192.694.8.576C20.565 21.796 24 17.297 24 12c0-6.63-5.373-12-12-12z">
+                </path>
+            </svg>
+            View on GitHub
+        </a>
+    </div>
+
+    <!-- Right side: image -->
+    <div class="h-60 sm:h-40 aspect-[16/9] rounded overflow-hidden bg-gray-700">
+        <img [src]="project.imageUrl" [alt]="project.title" class="object-cover w-full h-full" />
+    </div>
+</div>

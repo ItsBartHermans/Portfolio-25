@@ -1,0 +1,13 @@
+<div id="projects" class="px-4 py-6 max-w-[1200px] mx-auto">
+    <!-- Gradient title -->
+    <div class="text-center">
+        <h1 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r w-fit mx-auto"
+            style="background-image: linear-gradient(to right, #60A5FA, #832FE3);">
+            Projects
+        </h1>
+    </div>
+
+    <div class="space-y-4">
+        <app-project-row *ngFor="let project of projects" [project]="project"></app-project-row>
+    </div>
+</div>
