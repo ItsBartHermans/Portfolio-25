@@ -23,7 +23,7 @@ export class ProjectsComponent {
       description: `This portfolio was a personal project driven by my desire to have my own website. 
       Building it was a fun experience, allowing me to showcase my skills and projects. 
       It also helped me improve my front-end development skills and explore new design techniques.`,
-      githubUrl: 'https://github.com/ItsBartHermans/Portfolio-25',
+      githubUrl: 'https://github.com/ItsBartHermans/ItsBartHermans.github.io',
       imageUrl: 'assets/images/portfolio.jpg'
     },
     {
