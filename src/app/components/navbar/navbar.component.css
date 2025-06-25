@@ -59,3 +59,17 @@
     outline: 2px solid var(--c);
     outline-offset: 5px;
 }
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 4s linear infinite;
+}
