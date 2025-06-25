@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [AnimateOnScrollDirective],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })

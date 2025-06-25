@@ -51,7 +51,7 @@ export class AnimateOnScrollDirective implements OnInit, AfterViewInit {
         this.renderer.setStyle(el, 'transform', 'translateY(-100px)');
         break;
       case 'bottom':
-        this.renderer.setStyle(el, 'transform', 'translateY(20px)');
+        this.renderer.setStyle(el, 'transform', 'translateY(50px)');
         break;
       case 'left':
         this.renderer.setStyle(el, 'transform', 'translateX(-100px)');

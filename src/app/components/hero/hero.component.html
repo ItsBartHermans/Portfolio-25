@@ -2,10 +2,13 @@
 
     <!-- Image (not resized) -->
     <div class="relative w-full flex justify-center pt-50 sm:pt-0">
-        <img src="assets/images/hero1.png" alt="Hero" class="hero-image w-auto object-cover z-20" />
+        <div class=" z-20" appAnimateOnScroll direction="bottom" [speed]="0.1">
+            <img src="assets/images/hero1.png" alt="Hero" class="hero-image w-auto object-cover" />
+        </div>
+
 
         <!-- Name centered in image -->
-        <div
+        <div appAnimateOnScroll direction="top" [speed]="0.8"
             class="absolute top-1/3 sm:top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:-translate-y-1/3 text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold whitespace-nowrap pt-54 sm:pt-0">
             Bart <span class="bg-gradient-to-r from-[#60A5FA] to-[#832FE3] bg-clip-text text-transparent">Hermans</span>
         </div>
