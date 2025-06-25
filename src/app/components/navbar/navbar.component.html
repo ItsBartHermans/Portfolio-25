@@ -1,4 +1,5 @@
-<nav #navbar class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-[#111820] to-transparent linear-blur w-full">
+<nav #navbar
+    class="fixed top-0 left-0 max-w-screen right-0 z-50 bg-gradient-to-b from-[#111820] to-transparent linear-blur w-full">
     <div class="text-white p-4 flex items-center justify-between max-w-[1200px] mx-auto">
         <!-- Logo -->
         <div class="text-3xl font-extrabold">
@@ -29,9 +30,6 @@
                 [speed]="0.4">Projects</a>
             <a href="#stack" (click)="smoothScrollTo($event, '#stack')" appAnimateOnScroll direction="top"
                 [speed]="0.3">Stack</a>
-            <a href="#contact" (click)="smoothScrollTo($event, '#contact')" appAnimateOnScroll direction="top"
-                [speed]="0.2">Contact</a>
-
 
             <!-- GitHub icon -->
             <a href="https://github.com/ItsBartHermans" target="_blank" rel="noopener noreferrer" appAnimateOnScroll
@@ -54,8 +52,6 @@
     <a href="#whoami" (click)="smoothScrollTo($event, '#whoami')">Who Am I</a>
     <a href="#projects" (click)="smoothScrollTo($event, '#projects')">Projects</a>
     <a href="#stack" (click)="smoothScrollTo($event, '#stack')">Stack</a>
-    <a href="#contact" (click)="smoothScrollTo($event, '#contact')">Contact</a>
-
 
     <!-- GitHub link (mobile) -->
     <a href="https://github.com/ItsBartHermans" target="_blank" rel="noopener noreferrer"
