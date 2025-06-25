@@ -4,8 +4,13 @@ import { Component, Input } from '@angular/core';
 export interface Project {
   title: string;
   description: string;
-  githubUrl: string;
+  urls: RepoLink[];
   imageUrl: string;
+}
+
+export interface RepoLink {
+  label: string;
+  url: string;
 }
 
 @Component({

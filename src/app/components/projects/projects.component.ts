@@ -16,7 +16,11 @@ export class ProjectsComponent {
       It was a great experience in collaboration and teamwork. The most fun I had was with designing and implementing 
       the websocket system. The project also challenged me with several interesting coding problems and helped me grow 
       as a developer.`,
-      githubUrl: 'https://github.com/your-username/gif-battle',
+      urls: [
+        { url: 'https://github.com/ItsBartHermans/gifsplash-frontend', label: 'View frontend on GitHub' },
+        { url: 'https://github.com/ItsBartHermans/gifsplash-backend', label: 'View backend on GitHub' },
+      ],
+
       imageUrl: 'assets/images/gifsplash.png'
     },
     {
@@ -24,7 +28,9 @@ export class ProjectsComponent {
       description: `This portfolio was a personal project driven by my desire to have my own website. 
       Building it was a fun experience, allowing me to showcase my skills and projects. 
       It also helped me improve my front-end development skills and explore new design techniques.`,
-      githubUrl: 'https://github.com/ItsBartHermans/ItsBartHermans.github.io',
+      urls: [
+        { url: 'https://github.com/ItsBartHermans/Portfolio-25', label: 'View on GitHub' }
+      ],
       imageUrl: 'assets/images/portfolio.jpg'
     },
     {
@@ -32,7 +38,7 @@ export class ProjectsComponent {
       description: `During my internship at DEVENTit, I contributed to Atlantis 7, a leading platform for collection management and online presentation of diverse heritage collections. 
       The platform supports a wide range of collections—from archives, museums, and image collections to handwritten and printed sources, art, literature, building files, deeds, and registers. 
       Working on Atlantis 7 gave me valuable experience in debugging and tracing issues within large codebases, as well as designing new systems.`,
-      githubUrl: '',
+      urls: [],
       imageUrl: 'assets/images/naturalis.jpg'
     }
   ];
