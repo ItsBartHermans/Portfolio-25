@@ -7,7 +7,6 @@ import 'prismjs/components/prism-csharp.min.js';
   selector: 'app-who-am-i',
   imports: [CommonModule],
   templateUrl: './who-am-i.component.html',
-  styleUrl: './who-am-i.component.css'
 })
 export class WhoAmIComponent implements AfterViewInit {
   code = `

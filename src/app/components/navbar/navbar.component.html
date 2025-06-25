@@ -22,10 +22,10 @@
 
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center space-x-8 font-bold">
-            <a href="#whoami" class="hover:underline">Who&nbsp;Am&nbsp;I</a>
-            <a href="#projects" class="hover:underline">Projects</a>
-            <a href="#stack" class="hover:underline">Stack</a>
-            <a href="#contact" class="hover:underline">Contact</a>
+            <a href="#whoami" (click)="closeMenu()">Who Am I</a>
+            <a href="#projects" (click)="closeMenu()">Projects</a>
+            <a href="#stack" (click)="closeMenu()">Stack</a>
+            <a href="#contact" (click)="closeMenu()">Contact</a>
 
             <!-- GitHub icon (desktop) -->
             <a href="https://github.com/ItsBartHermans" target="_blank" rel="noopener noreferrer"
@@ -45,13 +45,13 @@
 <div class="fixed inset-0 bg-[#111820] text-white px-6 pt-20 space-y-6 font-bold transition-transform duration-300 ease-in-out z-40 lg:hidden flex flex-col"
     [class.translate-x-full]="!menuOpen" [class.translate-x-0]="menuOpen">
 
-    <a href="#whoami" class="hover:underline">Who&nbsp;Am&nbsp;I</a>
-    <a href="#projects" class="hover:underline">Projects</a>
-    <a href="#stack" class="hover:underline">Stack</a>
-    <a href="#contact" class="hover:underline">Contact</a>
+    <a href="#whoami" (click)="closeMenu()">Who Am I</a>
+    <a href="#projects" (click)="closeMenu()">Projects</a>
+    <a href="#stack" (click)="closeMenu()">Stack</a>
+    <a href="#contact" (click)="closeMenu()">Contact</a>
 
     <!-- GitHub link (mobile: icon + label) -->
-    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"
+    <a href="https://github.com/ItsBartHermans" target="_blank" rel="noopener noreferrer"
         class="hover:underline flex items-center space-x-3">
         <i class="fa-brands fa-github text-xl"></i>
         <span>GitHub</span>
