@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-csharp.min.js';
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
@@ -9,7 +9,7 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/ani
   imports: [CommonModule, AnimateOnScrollDirective],
   templateUrl: './who-am-i.component.html',
 })
-export class WhoAmIComponent implements AfterViewInit {
+export class WhoAmIComponent implements OnInit, AfterViewInit {
   @ViewChild('codeContainer') codeContainer!: ElementRef<HTMLElement>;
   @ViewChild('hiddenFullCode') hiddenFullCode!: ElementRef<HTMLElement>;
 
@@ -56,17 +56,17 @@ export class WhoAmIComponent implements AfterViewInit {
 
   constructor(private cd: ChangeDetectorRef) { }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.highlightedHiddenCode = Prism.highlight(
       this.fullCode,
       Prism.languages[this.languageIdentifier],
       this.languageIdentifier
     );
+  }
 
-    setTimeout(() => {
-      this.codeContainerHeight = this.hiddenFullCode.nativeElement.offsetHeight + 'px';
-      this.cd.detectChanges();
-    }, 1);
+  ngAfterViewInit(): void {
+    this.codeContainerHeight = this.hiddenFullCode.nativeElement.offsetHeight + 'px';
+    this.cd.detectChanges();
   }
 
   onReveal() {
