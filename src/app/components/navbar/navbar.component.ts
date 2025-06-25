@@ -1,16 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit {
   @ViewChild('menuToggle', { static: false }) menuToggle!: ElementRef<HTMLInputElement>;
+  @ViewChild('navbar', { static: false }) navbar!: ElementRef<HTMLElement>;
+
   menuOpen: boolean = false;
+  navbarHeight: number = 0;
+
+  ngAfterViewInit() {
+    this.navbarHeight = this.navbar.nativeElement.offsetHeight;
+  }
 
   closeMenu() {
     if (this.menuToggle) {
@@ -19,4 +27,20 @@ export class NavbarComponent {
     }
   }
 
+  smoothScrollTo(event: Event, selector: string) {
+    event.preventDefault();
+
+    const element = document.querySelector(selector);
+    if (!element) return;
+
+    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - this.navbarHeight;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+
+    this.closeMenu();
+  }
 }
