@@ -7,7 +7,9 @@
         </h1>
     </div>
 
-    <div class="space-y-4">
-        <app-project-row *ngFor="let project of projects" [project]="project"></app-project-row>
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-6 px-4 lg:mx-20">
+        <app-project-row *ngFor="let project of projects; let i = index" [project]="project" appAnimateOnScroll
+            [direction]="i % 2 === 0 ? 'left' : 'right'" [speed]="(i + 1) * 0.5">
+        </app-project-row>
     </div>
 </div>

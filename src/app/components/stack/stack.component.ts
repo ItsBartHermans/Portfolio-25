@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { StackData, StackCardComponent } from './stack-card/stack-card.component';
 import { CommonModule } from '@angular/common';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-stack',
-  imports: [StackCardComponent, CommonModule],
+  imports: [StackCardComponent, CommonModule, AnimateOnScrollDirective],
   templateUrl: './stack.component.html'
 })
 export class StackComponent {

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Project, ProjectRowComponent } from './project-row/project-row.component';
 import { CommonModule } from '@angular/common';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, ProjectRowComponent],
+  imports: [CommonModule, ProjectRowComponent, AnimateOnScrollDirective],
   templateUrl: './projects.component.html',
 })
 export class ProjectsComponent {
