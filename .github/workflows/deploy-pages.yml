@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main] # or your default branch
+  workflow_dispatch: # allows manual trigger
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) Check out the Angular source code
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      # 2) Set up Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # 3) Install dependencies & build
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Angular for production
+        run: |
+          npx ng build --configuration production --base-href="/"
+
+      # 4) Push the dist/**<projectName>** folder to your *Pages repo*
+      - name: Deploy to itsbarthermans.github.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          external_repository: ItsBartHermans/ItsBartHermans.github.io
+          publish_dir: dist/$(node -p "require('./angular.json').defaultProject") # auto-detect project folder
+          publish_branch: main # the root branch of the Pages repo
+          keep_files: false # replace old build
+          commit_message: "Deploy Angular site – ${{ github.sha }}"
+          user_name: GitHub Actions
+          user_email: actions@github.com
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
