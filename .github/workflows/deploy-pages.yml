@@ -33,7 +33,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           external_repository: ItsBartHermans/ItsBartHermans.github.io
-          publish_dir: dist/$(node -p "require('./angular.json').defaultProject") # auto-detect project folder
+          publish_dir: dist/portfolio/browser
           publish_branch: main # the root branch of the Pages repo
           keep_files: false # replace old build
           commit_message: "Deploy Angular site – ${{ github.sha }}"
