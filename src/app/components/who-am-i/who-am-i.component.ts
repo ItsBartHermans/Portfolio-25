@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
-import * as Prism from 'prismjs'
+import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import * as Prism from 'prismjs';
 import 'prismjs/components/prism-csharp.min.js';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-who-am-i',
-  imports: [CommonModule],
+  imports: [CommonModule, AnimateOnScrollDirective],
   templateUrl: './who-am-i.component.html',
 })
 export class WhoAmIComponent implements AfterViewInit {
-  code = `
+  readonly code = `
     public class BartHermans
     {
         public string Name => "Bart Hermans";
@@ -28,49 +29,52 @@ export class WhoAmIComponent implements AfterViewInit {
             }
         }
     }
-    `;
+  `;
 
-  highlightedCode: string = '';
-  languageIdentifier: string = 'csharp';
+  highlightedCode = '';
+  readonly languageIdentifier = 'csharp';
 
   outputLines: string[] = [];
-
-  constructor(private cd: ChangeDetectorRef) { }
-
-  ngAfterViewInit() {
-    this.highlightedCode = Prism.highlight(this.code, Prism.languages[this.languageIdentifier], this.languageIdentifier);
-    this.cd.detectChanges();
-  }
+  private readonly linesToPrint: string[] = [
+    "Hi, I'm Bart Hermans, a Software Engineer based in IJmuiden, Netherlands.",
+    "I enjoy building elegant apps and scalable systems.",
+    "Some of my key skills include:",
+    "- Java",
+    "- Angular",
+    "- C#"
+  ];
 
   isRunning = false;
 
-  startPrinting() {
+  constructor(private cd: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
+    this.highlightedCode = Prism.highlight(
+      this.code,
+      Prism.languages[this.languageIdentifier],
+      this.languageIdentifier
+    );
+    this.cd.detectChanges();
+  }
+
+  startPrinting(): void {
     if (this.isRunning) return;
 
     this.isRunning = true;
     this.outputLines = [];
 
-    const lines = [
-      "Hi, I'm Bart Hermans, a Software Engineer based in IJmuiden, Netherlands.",
-      "I enjoy building elegant apps and scalable systems.",
-      "Some of my key skills include:",
-      "- Java",
-      "- Angular",
-      "- C#"
-    ];
-
     let index = 0;
+    const delay = 100;
 
     const printNextLine = () => {
-      if (index < lines.length) {
-        this.outputLines.push(lines[index]);
+      if (index < this.linesToPrint.length) {
+        this.outputLines.push(this.linesToPrint[index]);
         index++;
-
-        const delay = 100;
         setTimeout(printNextLine, delay);
       } else {
         this.isRunning = false;
       }
+      this.cd.detectChanges();
     };
 
     printNextLine();
