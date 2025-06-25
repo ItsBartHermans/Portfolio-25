@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import * as Prism from 'prismjs';
 import 'prismjs/components/prism-csharp.min.js';
 import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
@@ -10,7 +10,12 @@ import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/ani
   templateUrl: './who-am-i.component.html',
 })
 export class WhoAmIComponent implements AfterViewInit {
-  readonly code = `
+  @ViewChild('codeContainer') codeContainer!: ElementRef<HTMLElement>;
+  @ViewChild('hiddenFullCode') hiddenFullCode!: ElementRef<HTMLElement>;
+
+  codeContainerHeight = 'auto';
+
+  readonly fullCode = `
     public class BartHermans
     {
         public string Name => "Bart Hermans";
@@ -32,6 +37,7 @@ export class WhoAmIComponent implements AfterViewInit {
   `;
 
   highlightedCode = '';
+  highlightedHiddenCode = '';
   readonly languageIdentifier = 'csharp';
 
   outputLines: string[] = [];
@@ -44,17 +50,27 @@ export class WhoAmIComponent implements AfterViewInit {
     "- C#"
   ];
 
-  isRunning = false;
+  isRunning = true;
+  private currentIndex = 0;
+  displayedCode = '';
 
   constructor(private cd: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
-    this.highlightedCode = Prism.highlight(
-      this.code,
+    this.highlightedHiddenCode = Prism.highlight(
+      this.fullCode,
       Prism.languages[this.languageIdentifier],
       this.languageIdentifier
     );
-    this.cd.detectChanges();
+
+    setTimeout(() => {
+      this.codeContainerHeight = this.hiddenFullCode.nativeElement.offsetHeight + 'px';
+      this.cd.detectChanges();
+    }, 1);
+  }
+
+  onReveal() {
+    this.startTyping();
   }
 
   startPrinting(): void {
@@ -78,5 +94,33 @@ export class WhoAmIComponent implements AfterViewInit {
     };
 
     printNextLine();
+  }
+
+  startTyping(): void {
+    this.isRunning = true;
+    this.currentIndex = 0;
+    this.displayedCode = '';
+    this.typeNextChar();
+  }
+
+  private typeNextChar(): void {
+    if (this.currentIndex < this.fullCode.length) {
+      this.displayedCode += this.fullCode[this.currentIndex];
+      this.currentIndex++;
+
+      // Highlight current displayed code
+      this.highlightedCode = Prism.highlight(
+        this.displayedCode,
+        Prism.languages[this.languageIdentifier],
+        this.languageIdentifier
+      );
+
+      this.cd.detectChanges();
+
+      setTimeout(() => this.typeNextChar(), 5);
+    } else {
+      this.isRunning = false;
+      this.cd.detectChanges();
+    }
   }
 }

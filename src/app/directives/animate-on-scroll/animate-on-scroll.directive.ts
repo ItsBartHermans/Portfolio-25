@@ -6,6 +6,8 @@ import {
   OnInit,
   AfterViewInit,
   HostListener,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 
 @Directive({
@@ -16,8 +18,10 @@ export class AnimateOnScrollDirective implements OnInit, AfterViewInit {
   @Input() direction: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
   @Input() speed: number = 0.8;
 
-  private isVisible = false;
+  @Output() animationDone = new EventEmitter<void>();
+
   private hasAnimated = false;
+  private transitionEndListener?: () => void;
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
@@ -64,19 +68,28 @@ export class AnimateOnScrollDirective implements OnInit, AfterViewInit {
     }
   }
 
-  private checkVisibility() {
+  private checkVisibility(): void {
     if (this.hasAnimated) return;
 
-    const el = this.el.nativeElement;
-    if (typeof el.getBoundingClientRect !== 'function') return;
+    const rect = this.el.nativeElement.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight;
 
-    const position = el.getBoundingClientRect();
-    if (position.top < window.innerHeight && !this.isVisible) {
-      this.isVisible = true;
+    if (inView) {
       this.hasAnimated = true;
 
-      this.renderer.setStyle(el, 'opacity', '1');
-      this.renderer.setStyle(el, 'transform', 'translate(0)');
+      // listen once for transition end, then emit
+      this.transitionEndListener = this.renderer.listen(
+        this.el.nativeElement,
+        'transitionend',
+        () => {
+          this.animationDone.emit();
+          this.transitionEndListener?.(); // remove listener
+        }
+      );
+
+      // trigger the animation
+      this.renderer.setStyle(this.el.nativeElement, 'opacity', '1');
+      this.renderer.setStyle(this.el.nativeElement, 'transform', 'translate(0)');
     }
   }
 }
