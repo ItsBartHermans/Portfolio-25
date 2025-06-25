@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AnimateOnScrollDirective } from '../../directives/animate-on-scroll/animate-on-scroll.directive';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AnimateOnScrollDirective],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })

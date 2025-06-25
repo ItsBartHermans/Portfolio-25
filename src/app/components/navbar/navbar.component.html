@@ -2,7 +2,8 @@
     <div class="text-white p-4 flex items-center justify-between max-w-[1200px] mx-auto">
         <!-- Logo -->
         <div class="text-3xl font-extrabold">
-            <a href="#" (click)="smoothScrollTo($event, '#hero')" class="flex items-center space-x-2">
+            <a href="#" (click)="smoothScrollTo($event, '#hero')" class="flex items-center space-x-2" appAnimateOnScroll
+                direction="top" [speed]="0.1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 640 512">
                     <defs>
                         <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -22,14 +23,19 @@
 
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center space-x-8 font-bold">
-            <a href="#whoami" (click)="smoothScrollTo($event, '#whoami')">Who Am I</a>
-            <a href="#projects" (click)="smoothScrollTo($event, '#projects')">Projects</a>
-            <a href="#stack" (click)="smoothScrollTo($event, '#stack')">Stack</a>
-            <a href="#contact" (click)="smoothScrollTo($event, '#contact')">Contact</a>
+            <a href="#whoami" (click)="smoothScrollTo($event, '#whoami')" appAnimateOnScroll direction="top"
+                [speed]="0.5">Who Am I</a>
+            <a href="#projects" (click)="smoothScrollTo($event, '#projects')" appAnimateOnScroll direction="top"
+                [speed]="0.4">Projects</a>
+            <a href="#stack" (click)="smoothScrollTo($event, '#stack')" appAnimateOnScroll direction="top"
+                [speed]="0.3">Stack</a>
+            <a href="#contact" (click)="smoothScrollTo($event, '#contact')" appAnimateOnScroll direction="top"
+                [speed]="0.2">Contact</a>
 
 
             <!-- GitHub icon -->
-            <a href="https://github.com/ItsBartHermans" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/ItsBartHermans" target="_blank" rel="noopener noreferrer" appAnimateOnScroll
+                direction="top" [speed]="0.1"
                 class="relative w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
                 <!-- gradient + blur “pill” -->
                 <span
