@@ -1,0 +1,18 @@
+<div class="bg-[#16232B] text-white rounded-md p-4 space-y-3">
+    <!-- Header with icon and title -->
+    <div class="flex items-center space-x-3">
+        <!-- Icon wrapper with background -->
+        <div class="bg-[#28435E] text-[#60A5FA] w-10 h-10 rounded flex items-center justify-center text-2xl">
+            <i [ngClass]="data.icon"></i>
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-lg font-semibold">{{ data.title }}</h2>
+    </div>
+
+
+    <!-- List of rows -->
+    <div *ngFor="let item of data.rows">
+        <app-stack-card-row [data]="item"></app-stack-card-row>
+    </div>
+</div>

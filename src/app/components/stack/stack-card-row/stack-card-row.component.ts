@@ -1,12 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+export interface StackCardRowData {
+  title: string;
+  icon: string;
+}
 
 @Component({
   selector: 'app-stack-card-row',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './stack-card-row.component.html',
-  styleUrl: './stack-card-row.component.css'
 })
 export class StackCardRowComponent {
-  @Input() title: string = '';
-  @Input() iconPath: string = '';
+  @Input() data!: StackCardRowData;
 }
