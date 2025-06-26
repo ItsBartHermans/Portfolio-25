@@ -101,6 +101,7 @@ export class WhoAmIComponent implements OnInit, AfterViewInit {
         link.href = 'assets/cv/CV-Bart-Hermans.pdf';
         link.download = 'CV-Bart-Hermans.pdf';
         link.click();
+
       }
       this.cd.detectChanges();
     };
