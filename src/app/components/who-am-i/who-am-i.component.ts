@@ -32,9 +32,16 @@ export class WhoAmIComponent implements OnInit, AfterViewInit {
             {
                 Console.WriteLine($"- {skill}");
             }
+            DownloadCV();
+        }
+
+        public void DownloadCV()
+        {
+            Console.WriteLine("Downloading CV from: /assets/cv/CV-Bart-Hermans.pdf");
         }
     }
   `;
+
 
   highlightedCode = '';
   highlightedHiddenCode = '';
@@ -47,7 +54,8 @@ export class WhoAmIComponent implements OnInit, AfterViewInit {
     "Some of my key skills include:",
     "- Java",
     "- Angular",
-    "- C#"
+    "- C#",
+    "Downloading CV from: /assets/cv/CV-Bart-Hermans.pdf"
   ];
 
   isRunning = true;
@@ -89,6 +97,10 @@ export class WhoAmIComponent implements OnInit, AfterViewInit {
         setTimeout(printNextLine, delay);
       } else {
         this.isRunning = false;
+        const link = document.createElement('a');
+        link.href = 'assets/cv/CV-Bart-Hermans.pdf';
+        link.download = 'CV-Bart-Hermans.pdf';
+        link.click();
       }
       this.cd.detectChanges();
     };
@@ -120,6 +132,7 @@ export class WhoAmIComponent implements OnInit, AfterViewInit {
       setTimeout(() => this.typeNextChar(), 5);
     } else {
       this.isRunning = false;
+
       this.cd.detectChanges();
     }
   }
