@@ -1,8 +1,21 @@
-<footer class="bg-[#16232B] text-white py-4 text-center text-sm">
-    © 2025 Bart
-    <span class="font-extrabold"
-        style="background: linear-gradient(90deg, #60A5FA, #832FE3); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-        Hermans
-    </span>
-    . All rights reserved.
+<footer class="border-t border-white/10 bg-[#111820] text-white">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 text-sm sm:flex-row">
+        <div class="flex items-center gap-3">
+            <div
+                class="flex h-9 w-9 items-center justify-center rounded-full border border-sky-400/40 bg-sky-500/10 text-[0.7rem] font-black leading-none tracking-[-0.12em] text-sky-300">
+                BH
+            </div>
+            <p class="text-slate-300">
+                Made with care by
+                <span class="font-semibold text-white">Bart Hermans</span>
+                <span class="text-slate-400">· {{ year }}</span>
+            </p>
+        </div>
+
+        <div class="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-slate-400">
+            <span>Available for work</span>
+            <span class="h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+            <span>Based in Netherlands</span>
+        </div>
+    </div>
 </footer>
