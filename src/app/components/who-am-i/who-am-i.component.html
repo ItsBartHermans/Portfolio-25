@@ -42,8 +42,9 @@
                 <div class="text-white font-semibold mb-2">Output</div>
 
                 <div class="relative inline-block">
-                    <button (click)="startPrinting()" [disabled]="isRunning" class="mb-2 px-2 py-1 rounded text-white font-semibold flex items-center justify-center
-                 bg-green-600 hover:bg-green-700 disabled:bg-green-400 disabled:cursor-not-allowed">
+                    <button (click)="startPrinting()" [disabled]="isRunning"
+                        class="mb-2 px-2 py-1 rounded text-white font-semibold flex items-center justify-center
+                 bg-green-600 hover:bg-green-700 disabled:bg-green-400 disabled:cursor-not-allowed enabled:cursor-pointer">
                         <svg *ngIf="!isRunning" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
                             class="w-4 h-4 fill-current">
                             <path
